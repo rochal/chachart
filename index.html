@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="chachart.js"></script>
+		<script type="text/javascript" src="color.js"></script>
+		<script type="text/javascript" src="legend.js"></script>
+		<script type="text/javascript" src="chart.js"></script>
+		<script type="text/javascript" src="component.js"></script>
+		<script type="text/javascript" src="pie.js"></script>
+		<script type="text/javascript" src="bar.js"></script>
+		<script type="text/javascript" src="line.js"></script>
+		<script type="text/javascript" src="column.js"></script>
+		<style type="text/css">
+			.chachart-chart { float:left; margin:5px; }
+		</style>
+		<link href="chachart.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<input type="button" onclick="updateSmoothAll()" value="Animation test" />
+		<input type="button" onclick="updateAll()" value="Stress test" /><br />
+		<script type="text/javascript">
+			function updateSmoothAll()
+			{					
+				for (var c in $chachart.charts)
+				{
+					$chachart.charts[c].update("#random");
+				}
+			}
+			
+			function updateAll()
+			{
+				var update = setInterval(function(){
+
+					//#random token is replaced with random data
+					for (var c in $chachart.charts)
+					{
+						$chachart.charts[c].stepUpdate("#random");
+					}
+
+				}, 100);
+
+
+			}
+
+		</script>
+		
+		<script type="text/javascript">
+			
+			$chachart.pie([
+				{ value: 82.2, color: '#B7EB34', name: 'Germany' },
+				{ value: 63.6, color: '#EC2655', name: 'France' },
+				{ value: 60.5, color: '#FDD006', name: 'United Kingdom' },
+				{ value: 59.7, color: '#4AC5EB', name: 'Italy' },
+				{ value: 46.7, color: '#0088FF', name: 'Spain' },
+				{ value: 38.6, color: '#00DD00', name: 'Poland' }
+			],{
+				legend: { position:'top' },
+				title: 'Most populated EU countries',
+				container: 'population',
+				labelsOnChart: true,
+				labelsOnChartTemplate: '{name}'
+			});
+		</script>
+		
+
+	<div id="population"></div>
+	<script type="text/javascript">
+		$chachart.pie([
+			{ value: 82217800, color: '#B7EB34', name: 'Germany' },
+			{ value: 63601002, color: '#EC2655', name: 'France' },
+			{ value: 60587000, color: '#FDD006', name: 'United Kingdom' },
+			{ value: 59715625, color: '#4AC5EB', name: 'Italy' },
+			{ value: 46777373, color: '#0088FF', name: 'Spain' },
+			{ value: 38625478, color: '#00DD00', name: 'Poland' }
+		],{
+			legend: { position:'top' },
+			title: 'Most populated EU countries',
+			container: 'population',
+			isDonut: true
+		});
+	</script>
+
+	<div id="area"></div>
+	<script type="text/javascript">
+		$chachart.pie([
+			{ value: 643548, color: '#B7EB34', name: 'France' },
+			{ value: 504782, color: '#EC2655', name: 'Spain' },
+			{ value: 449964, color: '#F000F0', name: 'Sweden' },
+			{ value: 357021, color: '#FDD006', name: 'Germany' },
+			{ value: 337030, color: '#4AC5EB', name: 'Finland' },
+			{ value: 312685, color: '#0088FF', name: 'Poland' },
+			{ value: 301320, color: '#00DD00', name: 'Italy' },
+			{ value: 244820, color: '#F65E01', name: 'United Kingdom' },
+			{ value: 238391, color: '#D32D51', name: 'Romania' }
+		],{
+			legend: { position:'bottom' },
+			title: 'Biggest EU countries',
+			container: 'area'
+		});
+	</script>
+	
+	<div id="poland"></div>
+	<script type="text/javascript">
+		$chachart.pie([
+			{ value: 0.5, color: '#E9E8E7 ', name: 'White' },
+			{ value: 0.5, color: '#D4213D', name: 'Red' }
+		],{
+			legend: { position:'right', showValues:false },
+			title: 'Colors in the flag of Poland',
+			container: 'poland',
+			labelsOnPie: true
+		});
+	</script>		
+
+	<div id="germany"></div>
+	<script type="text/javascript">
+		$chachart.pie([
+			{ value: 0.33, color: '#222222', name: 'Black' },
+			{ value: 0.33, color: '#FF0000', name: 'Red' },
+			{ value: 0.33, color: '#FFCC00', name: 'Gold' }
+		],{
+			legend: { title: 'Colors' },
+			title: 'Colors in the flag of Germany',
+			container: 'germany',
+			labelsOnChart: true
+		});
+	</script>
+	<div id="czech"></div>
+	<script type="text/javascript">
+		$chachart.pie([
+			{ value: 77276, color: '#00DD00', name: 'Land' },
+			{ value: 1590, color: '#0088FF', name: 'Water' }
+		],{
+			legend: { title: 'Water/land', position:'left', },
+			title: 'Water and land area in Czech Republic',
+			container: 'czech'
+		});
+	</script>
+	
+	<div id="netherlands"></div>
+	<script type="text/javascript">
+		$chachart.pie([
+			{ value: 7643, color: '#515B91', name: 'Water' },
+			{ value: 33883, color: '#2CAA56', name: 'Land' }
+		],{
+			legend: { title: 'Water/land', unit: ' km^2' },
+			title: 'Water and land area in The Netherlands',
+			container: 'netherlands',
+			labelsOnChart: true
+		});
+	</script>	
+	
+	<div id="budget"></div>
+	<script type="text/javascript">
+		$chachart.bar([
+			{ value: 21.11, color: '#B7EB34', name: 'Germany' },
+			{ value: 16.44, color: '#EC2655', name: 'France' },
+			{ value: 13.64, color: '#FDD006', name: 'Italy' },
+			{ value: 13.05, color: '#4AC5EB', name: 'United Kingdom' },
+			{ value: 8.51, color: '#0088FF', name: 'Spain' },
+			{ value: 5.28, color: '#00DD00', name: 'Netherlands' },
+			{ value: 3.83, color: '#F65E01', name: 'Belgium' },
+			{ value: 3.83, color: '#D32D51', name: 'Sweden' }
+		],{
+			legend: { title:'Percent contribution', position:'right', unit:'%' },
+			title: 'Contribution to EU budget by country',
+			container: 'budget'
+		});
+	</script>
+	
+	<div id="internet"></div>
+	<script type="text/javascript">
+		$chachart.bar([
+			{ value: 65.124, color: '#B7EB34', name: 'Germany' },
+			{ value: 51.442, color: '#EC2655', name: 'United Kingdom' },
+			{ value: 44.625, color: '#FDD006', name: 'France' },
+			{ value: 30.026, color: '#4AC5EB', name: 'Italy' },
+			{ value: 29.094, color: '#0088FF', name: 'Spain' },
+			{ value: 22.451, color: '#00DD00', name: 'Poland' }
+		],{
+			legend: { title: 'Users in thousands', position:'bottom' },
+			title: 'Internet users by EU country',
+			container: 'internet',
+			width: 300,
+			labelsOnChart: true
+		});
+	</script>
+
+	<div id="budget"></div>
+	<script type="text/javascript">
+		$chachart.column([
+			{ value: 21.11, color: '#B7EB34', name: 'Germany' },
+			{ value: 16.44, color: '#EC2655', name: 'France' },
+			{ value: 13.64, color: '#FDD006', name: 'Italy' },
+			{ value: 13.05, color: '#4AC5EB', name: 'United Kingdom' },
+			{ value: 8.51, color: '#0088FF', name: 'Spain' },
+			{ value: 5.28, color: '#00DD00', name: 'Netherlands' },
+			{ value: 3.83, color: '#F65E01', name: 'Belgium' },
+			{ value: 3.83, color: '#D32D51', name: 'Sweden' }
+		],{
+			legend: { title:'Percent contribution', position:'right', unit:'%' },
+			title: 'Contribution to EU budget by country',
+			container: 'budget'
+		});
+	</script>
+	
+	<div id="gdpcountries"></div>
+	<script type="text/javascript">
+		$chachart.line([
+			{name: "Germany", values:[3.33, 3.65, 3.33, 3.31], color: '#EC2655'},
+			{name: "France", values:[2.59, 2.86, 2.65, 2.58], color: '#FDD006'},
+			{name: "United Kingdom", values:[2.81, 2.67, 2.17, 2.24], color: '#4AC5EB'},
+			{name: "Italy", values:[2.11, 2.30, 2.11, 2.05], color: '#0088FF'}
+		],{
+			//pointDistance: 40,
+			useCurves: false,
+			fillUnder: false,
+			legend: { setsOnly:true },
+			title: "GDP in billions for selected EU countries",
+			width: 320,
+			showPoints: true,
+			labels: { show:true },
+			mouse: { useMouse:true },
+			container: 'gdpcountries'
+		});
+	</script>
+	
+	<div id="gbptousd"></div>
+	<script type="text/javascript">
+		$chachart.line([
+			{name:"GBP", color:"#00f", values:[
+					{name:2002, value:10},
+					{name:2003, value:35},
+					{name:2004, value:20},
+					{name:2005, value:45},
+					{name:2006, value:30},
+					{name:2007, value:55},
+					{name:2008, value:40},
+					{name:2009, value:65},
+					{name:2010, value:50},
+					{name:2011, value:75},
+					{name:2011, value:66}]},
+
+			{name:"USD", color:"#0f0", values:[10,15,20,20,20,40,50,20,10,5,20,40]}
+		],{
+			width: 400,
+			height: 200,
+			showPoints: false,
+			legend: { setsOnly:true, title:"Currency" },
+			labels: { show:true },
+			title: "Currency Exchange Rate",
+			mouse: { useMouse:true, selectionColor:'#ff0' },
+			fillUnder: true,
+			container: 'gbptousd'
+		});
+	</script>
+		
+	<div id="stockv"></div>
+	<script type="text/javascript">
+		$chachart.line([
+			{name:"Price", color:"#f00", values:[10,15,20,20,20,40,50,20,10,5]}
+		],{
+			width: 600,
+			height: 200,
+			showPoints: false,
+			//legend: { setsOnly:true, title:"Stock Price" },
+			labels: { verticalEvery:2, horizontalEvery:2 },
+			title: "Stock Value",
+			mouse: { useMouse:true },
+			fillUnder: true,
+			container: 'stockv'
+		});		
+	</script>
+		
+				
+	</body>
+</html>
