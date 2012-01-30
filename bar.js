@@ -81,9 +81,6 @@ $chachart.initChartType('bar', function(){
 			ctx.fillText(label, options.edgePadding, yPosition);					
 		}
 	}
-	
-	//now we can draw it
-	this.init();
-	this.draw();
-	return this;
+
+	return chart;
 });

@@ -203,9 +203,6 @@ $chachart.initChartType('pie', function(){
 			chart.draw();
 		}	
 	}
-	
-	//now we can draw it
-	this.init();
-	this.draw();
-	return this;
+
+	return chart;
 });

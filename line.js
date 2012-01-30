@@ -139,9 +139,6 @@ $chachart.initChartType('line', function(){
 			this.drawXYLines(ctx);			
 		}		
 	}
-	
-	//now we can draw it
-	this.init();
-	this.draw();
-	return this;
+
+	return chart;
 });

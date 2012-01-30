@@ -397,5 +397,5 @@ $chachart.chart = function(id, data, addOpts){
 	//finally, append node to document
 	document.body.appendChild(this.node);
 	
-	return this;
+	return chart;
 };

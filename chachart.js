@@ -22,6 +22,8 @@ var $chachart = {
 			//pass it to chart type class
 			var makeChart = chartClass.call(chart, chart);
 			$chachart.charts[$chachart.charts.length] = makeChart;
+			makeChart.init();
+			makeChart.draw();
 			return makeChart;
 		}
 	},
