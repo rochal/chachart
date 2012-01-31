@@ -7,11 +7,22 @@
 $chachart.initChartType('line', function(){
 	
 	var chart = this,
-		options = chart.options.get(),
+		options,
 		ctx = chart.ctx;
 	
+	this.defaultOpts = {
+		fillUnder: false,	//fill the chart under the line
+		showPoints: true
+	}
+
 	this.dataPoints = [];
-	
+
+	this.init = function()
+	{
+		//get options
+		options = this.options.get();
+	}
+
 	//actual point coordinates on canvas
 	this.calculateCoordinates = function()
 	{
@@ -116,11 +127,6 @@ $chachart.initChartType('line', function(){
 				}
 			}
 		}
-	}
-
-	this.init = function()
-	{
-
 	}
 
 	this.draw = function()	

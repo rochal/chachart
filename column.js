@@ -7,11 +7,21 @@
 $chachart.initChartType('column', function(){
 	
 	var chart = this,
-		options = chart.options.get(),
+		options,
 		ctx = chart.ctx;
 		
+	this.defaultOpts = {
+		colWidth: 30,
+		spaceBetweenCols: 10,
+		labelsOnColsTemplate: '_NAME_',
+		edgePadding: 10 //padding on the top/right between bars and edges
+	}
+
 	this.init = function()
 	{
+		//get options
+		options = this.options.get();
+
 		//calculate column width as it depends on number of data items
 		options.colWidth = ((this.canvas.width - options.edgePadding) / this.data[0].values.length) - options.spaceBetweenCols;
 	}

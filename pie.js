@@ -7,11 +7,40 @@
 $chachart.initChartType('pie', function(){
 	
 	var chart = this,
-		options = chart.options.get(),
+		options,
 		ctx = chart.ctx;
 		
-	this.name = 'pie';
-	
+	this.defaultOpts = {
+		pieRadius: 90,
+		defaultRotation: 0,
+		isDonut: false,
+		isShadow: true
+	}
+
+	this.init = function(isRedraw)
+	{
+		//get options
+		options = this.options.get();
+
+		var startAngle = options.defaultRotation;
+		for (var i = 0; i < this.data[0].values.length; i++)
+		{
+			var item = this.data[0].values[i],
+				part = item.value / this.data[0].total,
+				endAngle = 2 * Math.PI * part;
+
+			//create pie piece
+			var piece = isRedraw ? pieces[i] : new piePiece(item);
+			piece.start = startAngle;
+			piece.end = endAngle;
+			piece.label = item.name;
+			piece.item = item;
+
+			//draw piece
+			startAngle += endAngle;
+		}
+	}
+
 	var pieces = [];
 	
 	var drawShadow = function(ctx)
@@ -118,27 +147,6 @@ $chachart.initChartType('pie', function(){
 		//draw donut
 		drawDonut(ctx);
 	},
-
-	this.init = function(isRedraw)
-	{
-		var startAngle = options.defaultRotation;
-		for (var i = 0; i < this.data[0].values.length; i++)
-		{
-			var item = this.data[0].values[i],
-				part = item.value / this.data[0].total,
-				endAngle = 2 * Math.PI * part;
-			
-			//create pie piece
-			var piece = isRedraw ? pieces[i] : new piePiece(item);
-			piece.start = startAngle;
-			piece.end = endAngle;
-			piece.label = item.name;
-			piece.item = item;
-			
-			//draw piece		
-			startAngle += endAngle;
-		}
-	}
 	
 	this.animate = function(end, piece, method, callback)
 	{

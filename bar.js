@@ -7,11 +7,20 @@
 $chachart.initChartType('bar', function(){
 	
 	var chart = this,
-		options = chart.options.get(),
+		options,
 		ctx = chart.ctx;
-		
+
+	this.defaultOpts = {
+		barWidth: 30,
+		spaceBetweenBars: 10,
+		labelsOnBarsTemplate: '_NAME_'
+	}
+
 	this.init = function()
 	{
+		//get options
+		options = this.options.get();
+
 		//calculate bar width as it depends on number of data items
 		options.barWidth = ((this.canvas.height - options.edgePadding) / this.data[0].values.length) - options.spaceBetweenBars;
 	}

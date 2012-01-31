@@ -7,10 +7,8 @@
 $chachart.chart = function(id, data, addOpts){
 
 	var chart = this,
-		canvas,
 		node,
-		components = [],
-		ctx;
+		components = [];
 	
 	this.data = [];
 	this.animCounter = 0;
@@ -22,13 +20,6 @@ $chachart.chart = function(id, data, addOpts){
 		var defOpts = {
 			width: 200,
 			height: 200,
-			animTick: 2,
-			
-			//pie
-			pieRadius: 90,
-			defaultRotation: 0,
-			isDonut: false,
-			isShadow: true,
 			
 			//on chart labels
 			labelsOnChart: false,
@@ -36,27 +27,17 @@ $chachart.chart = function(id, data, addOpts){
 			
 			//legend
 			unit: '',
-			
-			edgePadding: 10, //padding on the top/right between bars and edges
-
-			//bar
-			barWidth: 30,
-			spaceBetweenBars: 10,
-			labelsOnBarsTemplate: '_NAME_',
-			
-			//column
-			colWidth: 30,
-			spaceBetweenCols: 10,
-			labelsOnColsTemplate: '_NAME_',
-			
-			//line
-			fillUnder: false,	//fill the chart under the line
-			showPoints: true			
+			edgePadding: 10 //padding on the top/right between bars and edges
 		};
 		
 		this.extend = function(addOpts)
 		{
 			defOpts = $chachart.$super(defOpts, addOpts);
+		}
+		
+		this.setDefaults = function(addOpts)
+		{
+			defOpts = $chachart.$super(addOpts, defOpts);
 		}
 		
 		this.get = function(prop, def)
@@ -345,6 +326,10 @@ $chachart.chart = function(id, data, addOpts){
 	 */
 	//extend default options
 	this.options = new this.opts();
+	if (this.defaultOpts)
+	{
+		this.options.extend(this.defaultOpts);
+	}
 	this.options.extend(addOpts);
 
 	//parse data object
