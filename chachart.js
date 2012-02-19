@@ -11,11 +11,11 @@ var $chachart = {
 	comps: [],
 	
 	//creates new instance of chart type object
-	initChartType: function(name, chartClass){
-
+	initChartType: function(name, chartClass)
+	{
 		//add quick reference
-		$chachart[name] = function(data, opts){
-			
+		$chachart[name] = function(data, opts)
+		{
 			//create new chart object
 			var chart = new $chachart.chart($chachart.charts.length, data, opts);
 
@@ -30,11 +30,11 @@ var $chachart = {
 	},
 	
 	//creates new instance of chart component object
-	initChartComponent: function(name, compClass){
-
+	initChartComponent: function(name, compClass)
+	{
 		//add quick reference
-		$chachart[name] = function(chart, opts){
-			
+		$chachart[name] = function(chart, opts)
+		{
 			//create new comp object
 			var comp = new $chachart.component($chachart.comps.length, chart, opts);
 
