@@ -13,7 +13,8 @@ $chachart.initChartType('bar', function(){
 	this.defaultOpts = {
 		barWidth: 30,
 		spaceBetweenBars: 10,
-		labelsOnBarsTemplate: '_NAME_'
+		labelsOnBarsTemplate: '_NAME_',
+		edgePadding: 10 //padding on the top/right between bars and edges
 	}
 
 	this.init = function()

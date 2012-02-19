@@ -20,14 +20,13 @@ $chachart.chart = function(id, data, addOpts){
 		var defOpts = {
 			width: 200,
 			height: 200,
-			
+
 			//on chart labels
 			labelsOnChart: false,
 			labelsOnChartTemplate: '{value}%',
 			
 			//legend
-			unit: '',
-			edgePadding: 10 //padding on the top/right between bars and edges
+			unit: ''
 		};
 		
 		this.extend = function(addOpts)
