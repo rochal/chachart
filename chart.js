@@ -270,7 +270,7 @@ $chachart.chart = function(id, data, addOpts){
 
 			if (data[d] && newData[d])
 			{
-				if (Math.floor(newData[d].value) != Math.floor(data[d].value))
+				if (~~newData[d].value != ~~data[d].value)
 				{
 					direction = (newData[d].value > data[d].value) ? 1 : -1;
 				}
