@@ -1,4 +1,3 @@
 $chachart.dataset = function()
 {
-	
 }
